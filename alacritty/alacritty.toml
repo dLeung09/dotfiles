@@ -1,0 +1,33 @@
+live_config_reload = true
+working_directory = '\\wsl.localhost\Ubuntu-22.04\home\dleung'
+
+import = [
+  # uncomment the flavour you want below:
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+  '\\wsl.localhost\Ubuntu-22.04\home\dleung\.config\alacritty\catppuccin-mocha.toml'
+]
+
+[shell]
+program = "C:\\Windows\\System32\\wsl.exe"
+
+[window]
+opacity = 0.8
+startup_mode = "Maximized"
+title = "Alacritty"
+dynamic_title = false
+
+[scrolling]
+history = 100000
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Heavy" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Heavy Italic" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Medium Italic" }
+
+[selection]
+save_to_clipboard = true
+
