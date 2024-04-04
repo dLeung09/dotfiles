@@ -5,15 +5,17 @@ opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.autoindent = true
+--  Overridding this for work things
+-- opt.tabstop = 2
+-- opt.shiftwidth = 2
+-- opt.expandtab = true
+-- opt.autoindent = true
 
 -- line wrapping at 132 characters (width of NVIM buffer with file explorer open, with about 4 characters gap)
-opt.wrap = true
-opt.linebreak = true
-opt.textwidth = 132
+--  Overridding this for work things
+-- opt.wrap = true
+-- opt.linebreak = true
+-- opt.textwidth = 132
 
 -- search settings
 opt.ignorecase = true
@@ -25,7 +27,9 @@ opt.cursorline = true
 -- appearance
 opt.termguicolors = true
 opt.background = "dark"
-opt.signcolumn = "yes"
+
+--  Overridding this for work things
+-- opt.signcolumn = "yes"
 
 -- backspace
 opt.backspace = "indent,eol,start"
@@ -41,9 +45,6 @@ opt.iskeyword:append("-")
 
 -- Use persistent history
 opt.undofile = true
-
--- For Obsidian UI Support
-opt.conceallevel = 2
 
 -- Default is 4 seconds, setting to 0.3s makes code completion more responsive since it will trigger intellisense faster
 opt.updatetime = 300
