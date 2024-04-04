@@ -1,0 +1,59 @@
+CompileFlags:
+  Add: [
+    # For some reason this has to be a normal include instead of system
+    '-Isolcbr/third-party/include',
+    # For ArchLinux / CentOS
+    '-isystem/usr/lib/glib-2.0/include',
+    # For Ubuntu
+    '-isystem/usr/lib/x86_64-linux-gnu/glib-2.0/include',
+    # For ArchLinux / CentOS / Ubuntu
+    '-isystem/usr/include/glib-2.0',
+    # Don't want error spam
+    '-ferror-limit=0',
+    # Fix missing generated code
+    # If you use "make vm"
+    '-Ibase/obj_Linux-x86_64-oraclelinux9_vmr_debug',
+    # If you use "make vm_opt"
+    # '-Ibase/obj_Linux-x86_64-oraclelinux9_vmr_opt',
+  ]
+  Remove: [
+    # These all live on the network, avoid at all cost
+    # '/usr/lib64/glib-2.0/include',
+    # '/opt/boost*',
+    # '/home/public/RND/*',
+    '-Werror'
+  ]
+  # Overriding the compiler, as otherwise it uses the one over the network
+  # Compiler: g++
+---
+If:
+  PathMatch: [
+    '.*/third-party/.*',
+    '.*/obj_.*',
+    '.*/drivers/.*',
+    '.*/solcbr/common/octeon/.*',
+    '.*/base/solstd/parser/.*',
+    '.*/web-client/.*',
+    '.*/arch/.*',
+    '.*/build/.*',
+    '.*/build-env/.*',
+    '.*/packaging/.*',
+    '.*/cvmx/.*',
+    '.*/.svn/.*',
+    '.*/.git/.*'
+  ]
+  PathExclude: [
+    '.*/model/mo/obj_vmr/.*',
+    # If you use "make vm"
+    '.*/obj_Linux-x86_64-oraclelinux9_lm_vmr_debug/.*',
+    '.*/obj_Linux-x86_64-oraclelinux9_vmr_debug/.*',
+    # If you use "make vm_opt"
+    # '.*/obj_Linux-x86_64-oraclelinux9_lm_vmr_opt/.*',
+    # '.*/obj_Linux-x86_64-oraclelinux9_vmr_opt/.*'
+  ]
+Index:
+  Background: Skip
+Hover:
+  ShowAKA: Yes
+Diagnostics:
+  UnusedIncludes: Strict
