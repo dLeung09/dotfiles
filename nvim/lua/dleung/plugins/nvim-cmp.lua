@@ -20,6 +20,11 @@ return {
         local luasnip = require("luasnip")
 
         local lspkind = require("lspkind")
+        lspkind.init({
+            symbol_map = {
+                Copilot = "",
+            },
+        })
 
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
@@ -75,6 +80,7 @@ return {
 
             -- sources for autocompletion
             sources = cmp.config.sources({
+                { name = "copilot" },
                 { name = "nvim_lsp" },
                 { name = "luasnip" }, -- snippets
                 { name = "buffer" }, -- text within current buffer
@@ -86,6 +92,9 @@ return {
                 format = lspkind.cmp_format({
                     maxwidth = 50,
                     ellipsis_char = "...",
+                    symbol_map = {
+                        Copilot = '',
+                    },
                 }),
             },
 
@@ -98,6 +107,11 @@ return {
                 comparators = {
                     cmp.config.compare.offset,
                     cmp.config.compare.exact,
+                    function(entry1, entry2)
+                        if package.loaded['copilot_cmp'] then
+                            return require('copilot_cmp.comparators').prioritize(entry1, entry2)
+                        end
+                    end,
                     cmp.config.compare.score,
                     cmp.config.compare.recently_used,
                     cmp.config.compare.locality,
