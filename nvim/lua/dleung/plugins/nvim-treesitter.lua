@@ -33,9 +33,11 @@ return {
           "vim",
           "dockerfile",
           "gitignore",
-          "query",
-          "norg",
         },
+        modules = {},
+        ignore_install = {},
+        auto_install = true,
+        sync_install = false,
         incremental_selection = {
           enable = true,
           keymaps = {
