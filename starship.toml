@@ -28,6 +28,7 @@ style = "bold sky"
 [git_branch]
 symbol = " "
 style = "surface2"
+format = 'on [$symbol($remote_branch)]($style) '
 
 [git_commit]
 #disabled = true

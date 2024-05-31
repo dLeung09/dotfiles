@@ -40,6 +40,8 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
+        local navic = require('nvim-navic')
+
         -- Use an on_attch function to only map the following keys after the
         -- language server attaches to the current buffer
         local on_attach = function(client, bufnr)
@@ -58,11 +60,6 @@ return {
                     augroup END
                 ]]
             end
-
-            -- TODO - once I look at `nvim-navic`
-            -- if client.server_capabilities.documentSybolProvider then
-            --     require("nvim-navic").attach(client, bufnr)
-            -- end
 
             -- Mappings
             local opts = { noremap=true, silent=true }
@@ -90,6 +87,14 @@ return {
             -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
             buf_set_keymap('n', '<space>q', '<cmd>Telescope document_diagnostics<CR>', opts)
             buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+            -- TODO - once I look at `nvim-navic`
+            if client.server_capabilities.documentSybolProvider then
+                navic.attach(client, bufnr)
+            else
+                -- Print an error indicating that the language server does not support document symbols
+                print("Language server does not support document symbols")
+            end
 
         end
 
