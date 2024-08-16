@@ -69,28 +69,28 @@ return {
       local opts = { noremap = true, silent = true }
 
       -- -- See `:help vim.lsp.*` for documentation on any of the below functions
-      -- buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-      -- -- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-      -- buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
-      -- buf_set_keymap('n', '<C-LeftMouse>', '<LeftMouse><cmd>Telescope lsp_definitions<CR>', opts)
-      -- buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-      -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-      -- buf_set_keymap('n', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-      -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-      -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-      -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-      -- -- buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-      -- buf_set_keymap('n', '<space>D', '<cmd>Telescope lsp_type_definitions<CR>', opts)
-      -- buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-      -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-      -- -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-      -- buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
-      -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-      -- buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-      -- buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-      -- -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-      -- buf_set_keymap('n', '<space>q', '<cmd>Telescope document_diagnostics<CR>', opts)
-      -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+      buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+      -- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+      buf_set_keymap("n", "<C-LeftMouse>", "<LeftMouse><cmd>Telescope lsp_definitions<CR>", opts)
+      buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+      buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+      buf_set_keymap("n", "<C-p>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+      buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+      buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+      buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+      -- buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+      buf_set_keymap("n", "<space>D", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+      buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+      buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+      -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+      buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+      buf_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+      buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+      buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+      -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+      buf_set_keymap("n", "<space>q", "<cmd>Telescope document_diagnostics<CR>", opts)
+      buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     end
 
     mason_lspconfig.setup_handlers({
@@ -101,31 +101,31 @@ return {
           on_attach = on_attach, -- is this necessary
         })
       end,
-      -- ["lua_ls"] = function()
-      --   -- configure lua server (with special settings)
-      --   lspconfig["lua_ls"].setup({
-      --     capabilities = capabilities,
-      --     on_attach = on_attach, -- is this necessary?
-      --     settings = {
-      --       Lua = {
-      --         -- make the language server recognize "vim" global
-      --         diagnostics = {
-      --           globals = { "vim" },
-      --           disable = { "lowercase-global" },
-      --         },
-      --         completion = {
-      --           callSnippet = "Replace",
-      --         },
-      --         runtime = {
-      --           version = "LuaJIT",
-      --         },
-      --         telemetry = {
-      --           enable = false,
-      --         },
-      --       },
-      --     },
-      --   })
-      -- end,
+      ["lua_ls"] = function()
+        -- configure lua server (with special settings)
+        lspconfig["lua_ls"].setup({
+          capabilities = capabilities,
+          on_attach = on_attach, -- is this necessary?
+          settings = {
+            Lua = {
+              -- make the language server recognize "vim" global
+              diagnostics = {
+                globals = { "vim" },
+                disable = { "lowercase-global" },
+              },
+              completion = {
+                callSnippet = "Replace",
+              },
+              runtime = {
+                version = "LuaJIT",
+              },
+              telemetry = {
+                enable = false,
+              },
+            },
+          },
+        })
+      end,
       ["clangd"] = function()
         lspconfig["clangd"].setup({
           capabilities = capabilities,
@@ -137,6 +137,12 @@ return {
           },
         })
       end,
+      ["ruff"] = function()
+        lspconfig["ruff"].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+        })
+      end,
       -- ["pyright"] = function()
       --   lspconfig["pyright"].setup({
       --     capabilities = capabilities,
@@ -145,4 +151,11 @@ return {
       -- end,
     })
   end,
+  opts = {
+    servers = {
+      clangd = {},
+      lua_ls = {},
+      ruff = {},
+    },
+  },
 }
