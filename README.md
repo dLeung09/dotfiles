@@ -7,7 +7,7 @@ My personal dotfiles
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y ripgrep make unzip gcc g++ npm zsh neovim
+sudo apt-get install -y ripgrep make unzip gcc g++ npm zsh golang
 ```
 
 ### Starship
@@ -30,6 +30,16 @@ chsh -s $(which zsh)
 
 ```bash
 export PATH=$PATH:~/.local/bin
+```
+
+### Neovim
+
+```bash
+curl -LO https://github.com/neovim/neovim/releases/download/v0.10.3/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+export PATH="$PATH:/opt/nvim-linux64/bin"
 ```
 
 ### `eza`
