@@ -59,7 +59,7 @@ sudo apt install -y eza
 ### `fd`
 
 ```bash
-sudo apt-get install fd-find
+sudo apt-get install -y fd-find
 
 mkdir -p ~/.local/bin
 ln -s $(which fdfind) ~/.local/bin/fd
@@ -70,10 +70,16 @@ ln -s $(which fdfind) ~/.local/bin/fd
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 ```
 
+### Retrieve dotfiles configuration
+
+```bash
+git clone https://github.com/dLeung09/dotfiles.git ~/.config
+```
+
 ### `bat`
 
 ```bash
-sudo apt install bat
+sudo apt install -y bat
 
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
@@ -83,12 +89,6 @@ mkdir -p "$(bat --config-dir)/themes"
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
 echo '--theme="Catppuccin Mocha"' >> $(bat --config-file)
-```
-
-### Retrieve dotfiles configuration
-
-```bash
-git clone https://github.com/dLeung09/dotfiles.git ~/.config
 ```
 
 ### Install the `tpm` package manager for `tmux`
