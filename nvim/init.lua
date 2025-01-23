@@ -1,2 +1,2 @@
-require("dleung.core")
-require("dleung.lazy")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

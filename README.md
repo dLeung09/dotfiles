@@ -3,56 +3,104 @@ My personal dotfiles
 
 ## Installation
 
-Install the following dependencies:
-- iputils
-- git
-- which
-- neovim
-- tmux
-- curl
-- stow
-- zsh
-- ripgrep
-- fzf
-- make
-- unzip
-- gcc
-- g++
-- npm
+### Dependencies
 
-Clone this repository:
+```bash
+sudo apt-get update
+sudo apt-get install -y ripgrep make unzip gcc g++ npm zsh neovim
 ```
+
+### Starship
+
+```bash
+curl -sS https://starship.rs/install.sh | sh
+```
+
+### Change default shell as `zsh`
+
+```bash
+which zsh
+chsh -s $(which zsh)
+```
+
+### Temporarily update PATH
+
+* Temporarily add `~/.local/bin/` to `PATH`, for verifying installation
+    - It will be added permanently by `.zshrc`
+
+```bash
+export PATH=$PATH:~/.local/bin
+```
+
+### `eza`
+
+```bash
+sudo apt update
+sudo apt install -y gpg
+
+sudo mkdir -p /etc/apt/keyrings
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+sudo apt update
+sudo apt install -y eza
+```
+
+### `fd`
+
+```bash
+sudo apt-get install fd-find
+
+mkdir -p ~/.local/bin
+ln -s $(which fdfind) ~/.local/bin/fd
+```
+### `zoxide`
+
+```bash
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+```
+
+### `bat`
+
+```bash
+sudo apt install bat
+
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
+
+# Configure 'catppuccin' theme
+mkdir -p "$(bat --config-dir)/themes"
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+bat cache --build
+echo '--theme="Catppuccin Mocha"' >> $(bat --config-file)
+```
+
+### Retrieve dotfiles configuration
+
+```bash
 git clone https://github.com/dLeung09/dotfiles.git ~/.config
 ```
 
-Clone the tpm plugin:
-```
+### Install the `tpm` package manager for `tmux`
+
+```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-Use `stow` to symlink config files:
-```
-cd ~/.config; stow .
+### Configure `tmux` to use config file
+
+```bash
+echo "source ~/.config/tmux/tmux.conf" > ~/.tmux.conf
 ```
 
-Make the appropriate TMUX directory structure and config files:
-```
-mkdir -p ~/.tmux; cp ~/.config/tmux/reset ~/.tmux/reset; echo "source ~/.config/tmux/tmux.conf" > ~/.tmux.conf
+### Configure `zsh` to use config file
+
+```bash
+echo "source ~/.config/zshrc/zshrc.conf" > ~/.zshrc
 ```
 
-Copy ZSH config to .zshrc file:
-```
-cp ~/.config/zshrc/zshrc.conf ~/.zshrc
-```
+### Reboot server
 
-Install Oh-My-ZSH:
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/master/tools/install.sh)"
-
-Run TMUX to install plugins.
-
-If using the `kanagawa` theme, the theme file needs to be made executable:
+```bash
+sudo reboot
 ```
-chmod +x ~/.tmux/plugins/tmux-kanagawa/kanagawa.tmux
-```
-
-Then reload TMUX config.
